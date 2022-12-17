@@ -49,11 +49,11 @@ main() {
 	else
 		cpu_percent=$(get_percent)
 		cpu_value_without_percent=${cpu_percent::-1}
-		if [ "$cpu_value_without_percent" -ge 85 ]; then
+		if (( $(echo "$cpu_value_without_percent >= 75" |bc -l) )); then
 			cpu_label=$(get_tmux_option "@dracula-cpu-usage-label-75" "")
-		elif [ "$cpu_value_without_percent" -ge 50 ]; then
+		elif (( $(echo "$cpu_value_without_percent >= 50" |bc -l) )); then
 			cpu_label=$(get_tmux_option "@dracula-cpu-usage-label-50" "C")
-		elif [ "$cpu_value_without_percent" -ge 25 ]; then
+		elif (( $(echo "$cpu_value_without_percent >= 25" |bc -l) )); then
 			cpu_label=$(get_tmux_option "@dracula-cpu-usage-label-25" "CP")
 		else
 			cpu_label=$(get_tmux_option "@dracula-cpu-usage-label" "CPU")
