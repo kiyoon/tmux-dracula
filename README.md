@@ -1,3 +1,22 @@
+# Fork by Kiyoon
+Changed powerline left status bg colour to light_purple.  
+
+Added granular icons depending on the cpu/battery percentage.  
+For example:  
+
+```tmux
+set -g @dracula-cpu-usage-label "😉"
+set -g @dracula-cpu-usage-label-25 "😵"
+set -g @dracula-cpu-usage-label-50 "🤕"
+set -g @dracula-cpu-usage-label-75 "🤯"
+set -g @dracula-battery-dc-label "🌱"
+set -g @dracula-battery-dc-label-35 "🌿"
+set -g @dracula-battery-dc-label-70 "🥕"
+set -g @dracula-battery-ac-label "💦🌱"
+set -g @dracula-battery-ac-label-35 "💦🌿"
+set -g @dracula-battery-ac-label-70 "💦🥕"
+```
+
 # Dracula for [tmux](https://github.com/tmux/tmux/wiki)
 
 > A dark theme for [tmux](https://github.com/tmux/tmux/wiki)
