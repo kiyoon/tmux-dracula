@@ -11,12 +11,13 @@ set -g @dracula-cpu-usage-label "😉"
 set -g @dracula-cpu-usage-label-25 "😵"
 set -g @dracula-cpu-usage-label-50 "🤕"
 set -g @dracula-cpu-usage-label-75 "🤯"
-set -g @dracula-battery-dc-label "🌱"
+set -g @dracula-battery-dc-label-0 "🌱"
 set -g @dracula-battery-dc-label-35 "🌿"
 set -g @dracula-battery-dc-label-70 "🥕"
-set -g @dracula-battery-ac-label "💦🌱"
+set -g @dracula-battery-ac-label-0 "💦🌱"
 set -g @dracula-battery-ac-label-35 "💦🌿"
 set -g @dracula-battery-ac-label-70 "💦🥕"
+set -g @dracula-battery-ac-label "🏡"
 ```
 
 # Dracula for [tmux](https://github.com/tmux/tmux/wiki)
