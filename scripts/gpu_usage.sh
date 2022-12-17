@@ -10,7 +10,7 @@ get_gpu()
 	if command -v nvidia-smi >/dev/null 2>&1; then
 		usage=$(nvidia-smi | grep '%' | awk '{ sum += $13 } END { printf("%d%%\n", sum / NR) }')
 	else
-		usage='unknown'
+		usage='-'
 	fi
 	normalize_percent_len $usage
 }
@@ -21,7 +21,7 @@ main()
 	RATE=$(get_tmux_option "@dracula-refresh-rate" 5)
 	gpu_label=$(get_tmux_option "@dracula-gpu-usage-label" "GPU")
 	gpu_usage=$(get_gpu)
-	echo "$gpu_label $gpu_usage"
+	echo "$gpu_label  $gpu_usage"
 	sleep $RATE
 }
 
