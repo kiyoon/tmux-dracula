@@ -111,12 +111,13 @@ battery_status()
 
 main()
 {
-	bat_dc_label=$(get_tmux_option "@dracula-battery-dc-label" "DC")
+	bat_dc_0_label=$(get_tmux_option "@dracula-battery-dc-label-0" "DC")
 	bat_dc_35_label=$(get_tmux_option "@dracula-battery-dc-label-35" "DC")
 	bat_dc_70_label=$(get_tmux_option "@dracula-battery-dc-label-70" "DC")
-	bat_ac_label=$(get_tmux_option "@dracula-battery-ac-label" "AC")
+	bat_ac_0_label=$(get_tmux_option "@dracula-battery-ac-label-0" "AC")
 	bat_ac_35_label=$(get_tmux_option "@dracula-battery-ac-label-35" "AC")
 	bat_ac_70_label=$(get_tmux_option "@dracula-battery-ac-label-70" "AC")
+	bat_ac_label=$(get_tmux_option "@dracula-battery-ac-label" "AC")	# desktop with no battery percent
 
 	bat_stat=$(battery_status)
 	bat_perc=$(battery_percent)
@@ -127,7 +128,7 @@ main()
 		elif [ "$bat_perc" -ge 35 ]; then
 			bat_label="$bat_ac_35_label"
 		else
-			bat_label="$bat_ac_label"
+			bat_label="$bat_ac_0_label"
 		fi
 	else
 		if [ "$bat_perc" -ge 70 ]; then
@@ -135,7 +136,7 @@ main()
 		elif [ "$bat_perc" -ge 35 ]; then
 			bat_label="$bat_dc_35_label"
 		else
-			bat_label="$bat_dc_label"
+			bat_label="$bat_dc_0_label"
 		fi
 	fi
 
@@ -143,7 +144,7 @@ main()
 	if [ -z "$bat_stat" ]; then # Test if status is empty or not
 		echo "$bat_label $bat_perc"
 	elif [ -z "$bat_perc" ]; then # In case it is a desktop with no battery percent, only AC power
-		echo "$bat_label"
+		echo "$bat_ac_label"
 	else
 		echo "$bat_label $bat_perc"
 	fi
