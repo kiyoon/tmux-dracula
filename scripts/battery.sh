@@ -121,19 +121,20 @@ main()
 
 	bat_stat=$(battery_status)
 	bat_perc=$(battery_percent)
+  bat_wo_perc=$(echo "$bat_perc" | sed 's/%//')
 
-	if [ "$bat_stat" = 'AC' ]; then
-		if [ "$bat_perc" -ge 70 ]; then
+	if [[ "$bat_stat" = 'AC' ]]; then
+		if [[ "$bat_wo_perc" -ge 70 ]]; then
 			bat_label="$bat_ac_70_label"
-		elif [ "$bat_perc" -ge 35 ]; then
+		elif [[ "$bat_wo_perc" -ge 35 ]]; then
 			bat_label="$bat_ac_35_label"
 		else
 			bat_label="$bat_ac_0_label"
 		fi
 	else
-		if [ "$bat_perc" -ge 70 ]; then
+		if [[ "$bat_wo_perc" -ge 70 ]]; then
 			bat_label="$bat_dc_70_label"
-		elif [ "$bat_perc" -ge 35 ]; then
+		elif [[ "$bat_wo_perc" -ge 35 ]]; then
 			bat_label="$bat_dc_35_label"
 		else
 			bat_label="$bat_dc_0_label"
@@ -141,9 +142,9 @@ main()
 	fi
 
 
-	if [ -z "$bat_stat" ]; then # Test if status is empty or not
+	if [[ -z "$bat_stat" ]]; then # Test if status is empty or not
 		echo "$bat_label $bat_perc"
-	elif [ -z "$bat_perc" ]; then # In case it is a desktop with no battery percent, only AC power
+	elif [[ -z "$bat_perc" ]]; then # In case it is a desktop with no battery percent, only AC power
 		echo "$bat_ac_label"
 	else
 		echo "$bat_label $bat_perc"
