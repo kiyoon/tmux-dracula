@@ -16,10 +16,9 @@ normalize_percent_len() {
   # the max length that the percent can reach, which happens for a two digit number with a decimal house: "99.9%"
   max_len=3
   percent_len=${#1}
-  let diff_len=$max_len-$percent_len
+  diff_len=$((max_len-percent_len))
   # if the diff_len is even, left will have 1 more space than right
-  let left_spaces=($diff_len+1)/2
-  let right_spaces=($diff_len)/2
+  left_spaces=$(( (diff_len+1) /2 ))
+  right_spaces=$((diff_len/2))
   printf "%${left_spaces}s%s%${right_spaces}s\n" "" $1 ""
 }
-
