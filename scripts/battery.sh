@@ -171,14 +171,21 @@ battery_status_old()
 		*)
 			;;
 	esac
-  ### Old if statements didn't work on BSD, they're probably not POSIX compliant, not sure
-  if [ $status = 'discharging' ] || [ $status = 'Discharging' ]; then
-  	echo ''
-  # elif [ $status = 'charging' ]; then # This is needed for FreeBSD AC checking support
-  	# echo 'AC'
-  else
-   	echo 'AC'
-  fi
+
+  case $status in
+		discharging|Discharging)
+			echo ''
+			;;
+    high|charged|Full)
+			echo ''
+			;;
+		charging|Charging|finishingcharge|ACattached)
+			echo 'AC'
+			;;
+		*)
+			echo 'AC'
+			;;
+	esac
 }
 
 main()
