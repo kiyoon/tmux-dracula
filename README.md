@@ -1,10 +1,11 @@
 # Fork by Kiyoon
-Changed powerline left status bg colour to light_purple.  
-Changed CPU/GPU information to be 3 characters excluding decimal place.  
+Changed powerline left status bg colour to light_purple.
+Changed CPU/GPU information to be 3 characters excluding decimal place.
 Changed GPU always use nvidia-smi if the command is available. (some computers have additional VGA)
+Round mac GPU to the nearest integer.
 
-Added granular icons depending on the cpu/battery percentage.  
-For example:  
+Added granular icons depending on the cpu/battery percentage.
+For example:
 
 ```tmux
 set -g @dracula-cpu-usage-label "😉"

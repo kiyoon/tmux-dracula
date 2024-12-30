@@ -45,7 +45,9 @@ get_gpu()
   if [[ "$gpu" == NVIDIA ]]; then
     usage=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{ sum += $0 } END { printf("%d%%\n", sum / NR) }')
   elif [[ "$gpu" == apple ]]; then
-    usage="$(sudo powermetrics --samplers gpu_power -i500 -n 1 | grep 'active residency' | sed 's/[^0-9.%]//g' | sed 's/[%].*$//g')%"
+    usage="$(sudo powermetrics --samplers gpu_power -i500 -n 1 | grep 'active residency' | sed 's/[^0-9.%]//g' | sed 's/[%].*$//g')"
+    # round the usage to the nearest integer
+    usage=$(printf "%.0f" $usage)%
   else
     usage='unknown'
   fi
